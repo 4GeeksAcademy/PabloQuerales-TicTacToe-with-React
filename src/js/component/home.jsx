@@ -9,7 +9,6 @@ const Home = () => {
 		<div className="text-center box">
 			<Header />
 			<PickMenu />
-			<Boardgame />
 		</div>
 	);
 };
