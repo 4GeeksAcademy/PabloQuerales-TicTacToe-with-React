@@ -1,7 +1,6 @@
 import React from "react";
 import Header from "./header";
 import PickMenu from "./pickMenu";
-import Boardgame from "./gridPlay";
 
 //create your first component
 const Home = () => {

@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
-import Boardgame from "./gridPlay";
+import BoardGame from "./boardGame";
+import WinModal from "./winModal";
 
 const PickMenu = () => {
 	const [isSent, setIsSent] = useState(false);
@@ -8,7 +9,7 @@ const PickMenu = () => {
 	const [player2, setPlayer2] = useState("");
 
 	if (isSent) {
-		return <Boardgame />;
+		return <BoardGame />;
 	}
 	const handleClick = () => {
 		setIsSent(true);

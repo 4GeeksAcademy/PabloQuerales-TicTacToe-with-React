@@ -1,15 +1,23 @@
 import React from "react";
 import { useState } from "react";
-
-const Boardgame = () => {
+import WinModal from "./winModal";
+const BoardGame = () => {
 	const [isSent, setIsSent] = useState(false);
 	const [pickSelection, setPickSelection] = useState(true);
 	const [validatorX, setValidatorX] = useState([]);
 	const [validatorO, setValidatorO] = useState([]);
-	const [winCondition, setWinCondition] = useState(["0", "1", "2"]);
-
+	const [winCondition, setWinCondition] = useState([
+		["0", "1", "2"],
+		["3", "4", "5"],
+		["6", "7", "8"],
+		["0", "3", "6"],
+		["1", "4", "7"],
+		["2", "5", "8"],
+		["0", "4", "8"],
+		["2", "4", "6"]
+	]);
 	if (isSent) {
-		return <Boardgame />;
+		return <BoardGame />;
 	}
 	const reset = () => {
 		setIsSent(true);
@@ -29,21 +37,24 @@ const Boardgame = () => {
 			}
 		}
 	};
+	let winModal = () => {
+		return <WinModal />;
+	};
 
-	if (validatorX.length >= 3) {
-		if (validatorX == winCondition) {
-			console.log("Ganaste");
-		}
-	} else {
-		console.log("perdiste");
+	if (validatorX.length >= 3 || validatorO >= 3) {
+		winCondition.forEach((e) => {
+			let equalX = e.every((item) => validatorX.includes(item));
+			let equalO = e.every((item) => validatorO.includes(item));
+			if (equalX) {
+				alert("Gana X");
+			}
+			if (equalO) {
+				alert("Gana O");
+			}
+		});
 	}
-	console.log(validatorX);
-	// [{1:0,1,2},{2:3,4,5},{3:6,7,8},{4:0,3,6},{5:1,4,7},{6:2,5,8},{7:0,4,8},{8:2,4,6}]
-	// VALIDADOR DE X
-	// VALIDADOR DE O
-
 	return (
-		<div className="boardgame">
+		<div className="BoardGame">
 			<h2>It is x turn!</h2>
 			<button onClick={reset}>Start Over</button>
 			<div className="container text-center">
@@ -67,4 +78,4 @@ const Boardgame = () => {
 	);
 };
 
-export default Boardgame;
+export default BoardGame;
