@@ -1,43 +1,56 @@
 import React from "react";
 import { useState } from "react";
 import BoardGame from "./boardGame";
-import WinModal from "./winModal";
 
 const PickMenu = () => {
-	const [isSent, setIsSent] = useState(false);
+	const [isSentX, setIsSentX] = useState(false);
+	const [isSentO, setIsSentO] = useState(true);
 	const [player1, setPlayer1] = useState("");
 	const [player2, setPlayer2] = useState("");
 
-	if (isSent) {
-		return <BoardGame />;
+	if (isSentX) {
+		return <BoardGame x={isSentX} o={isSentO} />;
 	}
-	const handleClick = () => {
-		setIsSent(true);
+	const handleClickX = () => {
+		if (player1 != "" && player2 != "") {
+			setIsSentX(true);
+		}
 	};
-	const onChange = (e) => {
-		if (e.target.placeholder == player1) {
+	if (!isSentO) {
+		return <BoardGame player1={player1} player2={player2} />;
+	}
+	const handleClickO = () => {
+		if (player1 != "" && player2 != "") {
+			setIsSentO(false);
+		}
+	};
+	const onChangePlayer1 = (e) => {
+		if (e.target.value != player1) {
 			setPlayer1(e.target.value);
 			console.log(player1);
-		} else {
+		}
+	};
+	const onChangePlayer2 = (e) => {
+		if (e.target.value != player2) {
 			setPlayer2(e.target.value);
 			console.log(player2);
 		}
 	};
 	return (
-		<>
+		<div className="container-players">
 			<h2>Pick A Weapon</h2>
 			<div>
 				<h3>CHOOSE YOUR WEAPON</h3>
-				<div>
-					<input type="text" placeholder="Player1" onChange={onChange} />
-					<input type="text" placeholder="Player2" onChange={onChange} />
+				<div className="input-players">
+					<input type="text" placeholder="Player1" onChange={onChangePlayer1} />
+					<input type="text" placeholder="Player2" onChange={onChangePlayer2} />
 				</div>
-				<div>
-					<button onClick={handleClick}>X</button>
-					<button>O</button>
+				<div className="button-player">
+					<button onClick={handleClickX}>X</button>
+					<button onClick={handleClickO}>O</button>
 				</div>
 			</div>
-		</>
+		</div>
 	);
 };
 

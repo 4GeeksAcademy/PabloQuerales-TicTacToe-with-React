@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from "react";
 import PickMenu from "./pickMenu";
 
-const BoardGame = () => {
+const BoardGame = (props) => {
 	const [isSent, setIsSent] = useState(false);
 	const [mainMenu, setMainMenu] = useState(false);
 	const [player, setPlayer] = useState("It is X turn!");
-	const [pickSelection, setPickSelection] = useState(true);
+	const [pickSelection, setPickSelection] = useState(props.o);
 	const [validatorX, setValidatorX] = useState([]);
 	const [validatorO, setValidatorO] = useState([]);
+	const [color, setColor] = useState("");
 	const [winCondition, setWinCondition] = useState([
 		["0", "1", "2"],
 		["3", "4", "5"],
@@ -25,17 +26,24 @@ const BoardGame = () => {
 			for (let i = 0; i < winCondition.length; i++) {
 				const winSet = winCondition[i];
 				if (winSet.every((item) => validatorX.includes(item))) {
-					setPlayer("EL GANADOR ES LA X");
+					setPlayer("El ganador es X");
+					setColor("winner-color");
+
 					return;
 				}
 				if (winSet.every((item) => validatorO.includes(item))) {
-					setPlayer("EL GANADOR ES LA O");
+					setPlayer("El ganador es O");
 					return;
 				}
 			}
 		}
 	}, [validatorX, validatorO, winCondition]); // Solo ejecuta cuando cambian estos valores
 
+	if (pickSelection) {
+		setFirstPlayer("X");
+	} else {
+		setFirstPlayer("O");
+	}
 	const reset = () => {
 		setIsSent(true);
 	};
@@ -45,7 +53,7 @@ const BoardGame = () => {
 	};
 
 	const handleClick = (e) => {
-		if ((player == "It is O turn!" || player == "It is X turn!") && e.target.textContent === "") {
+		if ((player == `It is X turn!` || player == `It is O turn!`) && e.target.textContent === "") {
 			if (pickSelection) {
 				e.target.textContent = "X";
 				setValidatorX([...validatorX, e.target.id]);
@@ -66,10 +74,9 @@ const BoardGame = () => {
 	if (mainMenu) {
 		return <PickMenu />;
 	}
-
 	return (
-		<div className="BoardGame">
-			<h2>{player}</h2>
+		<div className="board-game">
+			<h2 className={color}>{player}</h2>
 			<button onClick={reset}>Start Over</button>
 			<button onClick={main}>Main Menu</button>
 			<div className="container text-center">
