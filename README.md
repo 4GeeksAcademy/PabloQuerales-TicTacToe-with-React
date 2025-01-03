@@ -1,46 +1,56 @@
-<!-- hide -->
+# TicTacToe with React
 
-> ⚠️ This repository is deprecated and has no maintenance; we recommend using the [React Hello Vite](https://github.com/4GeeksAcademy/react-hello-vite) template instead.
+## Descripción
 
-# Hello World with React boilerplate
+**TicTacToe with React** es un juego de tres en línea desarrollado con React. Este proyecto fue creado como parte de nuestro aprendizaje en desarrollo web y está diseñado para ofrecer una experiencia interactiva y divertida.
 
-Start coding a react application
+## Características
 
-<!-- endhide -->
+- **Modo de juego para dos jugadores**: Juega contra un amigo en el mismo dispositivo.
+- **Estado del juego en tiempo real**: Actualización inmediata del tablero y verificación del ganador.
 
-## How to start coding?
+## Tecnologías utilizadas
 
-- Install the packages with `$ npm install`.
-- Run the webpack server with `$ npm run start`
+- React
+- JavaScript (ES6+)
+- HTML5
+- CSS3
 
-You can update the `styles/index.css` or `js/index.js` depending on your needs.
-Add more files into your, `./src/js/components` or styles folder as you need them.
+## Instalación
 
-## Local Installation (skip if you are working on codespaces or gitpod)
+1. Clona este repositorio:
+   ```bash
+   git clone https://github.com/PabloQuerales/TicTacToe-with-React.git
+   ```
+2. Navega al directorio del proyecto:
+   ```bash
+   cd TicTacToe-With-React
+   ```
+3. Instala las dependencias necesarias:
+   ```bash
+   npm install
+   ```
+4. Inicia la aplicación en modo de desarrollo:
+   ```bash
+   npm start
+   ```
+   La aplicación estará disponible en [http://localhost:3000](http://localhost:3000).
 
-Download the boilerplate using git
+## Cómo jugar
 
-```
-$ git clone https://github.com/4GeeksAcademy/react-hello.git
-$ cd react-hello
-```
+1. Selecciona un recuadro en el tablero para marcar tu jugada.
+2. Los jugadores alternan turnos hasta que uno de ellos gane o el tablero se llene.
+3. Las combinaciones ganadoras son:
+   - Tres en línea horizontal, vertical o diagonal.
 
-## Publish your website!
+## Futuras mejoras
 
-This boilerplate is 100% compatible with the free [github pages](https://pages.github.com/) and [vercel](https://vercel.com/) hosting.
+- Implementar modo de un jugador contra IA.
+- Mejorar la experiencia de usuario con animaciones.
 
-It takes just 2 minutes to deploy, [click here to start the process](https://github.com/4GeeksAcademy/react-hello/blob/master/docs/DEPLOY.md).
+## Contribuidores
 
-## Other features
+- **Pablo Querales** ([GitHub](https://github.com/PabloQuerales))
+- **Camilo Cortes** ([GitHub](https://github.com/camilocortes27))
 
-- Automatic Code Formatting: Use of [Prettier](https://prettier.io/) for automatic code indentation and formatting.
-- Error reporting: Use of [eslint](https://eslint.org/) for better error reporting.
-- Hot Deploy: Use of [Webpack Development Server](https://webpack.js.org/configuration/dev-server/) for hot deploy and live reload.
-- One-command publish of the code to github pages with `npm run deploy:github`.
-- Babel 7 (really fast).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
+¡Gracias por jugar "TicTacToe with React"! Si tienes alguna sugerencia o encuentras algún problema, no dudes en abrir un issue en el repositorio.

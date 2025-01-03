@@ -36,6 +36,10 @@ const BoardGame = (props) => {
 					return;
 				}
 			}
+			if (validatorO.length + validatorX.length == 9 && player != "El ganador es X" && player != "El ganador es O") {
+				setPlayer("Draw");
+				return;
+			}
 		}
 	}, [validatorX, validatorO, winCondition]); // Solo ejecuta cuando cambian estos valores
 
