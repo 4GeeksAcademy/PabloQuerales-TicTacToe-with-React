@@ -7,35 +7,37 @@ const PickMenu = () => {
 	const [isSentO, setIsSentO] = useState(true);
 	const [player1, setPlayer1] = useState("");
 	const [player2, setPlayer2] = useState("");
+	const [firstPlayer, setFirstPlayer] = useState("");
 
 	if (isSentX) {
-		return <BoardGame x={isSentX} o={isSentO} />;
+		return <BoardGame x={isSentX} o={isSentO} firstPlayer={firstPlayer} />;
 	}
 	const handleClickX = () => {
 		if (player1 != "" && player2 != "") {
 			setIsSentX(true);
+			setFirstPlayer("It is X turn!");
 		}
 	};
 	if (!isSentO) {
-		return <BoardGame player1={player1} player2={player2} />;
+		return <BoardGame player1={player1} player2={player2} firstPlayer={firstPlayer} />;
 	}
 	const handleClickO = () => {
 		if (player1 != "" && player2 != "") {
 			setIsSentO(false);
+			setFirstPlayer("It is O turn!");
 		}
 	};
 	const onChangePlayer1 = (e) => {
 		if (e.target.value != player1) {
 			setPlayer1(e.target.value);
-			console.log(player1);
 		}
 	};
 	const onChangePlayer2 = (e) => {
 		if (e.target.value != player2) {
 			setPlayer2(e.target.value);
-			console.log(player2);
 		}
 	};
+
 	return (
 		<div className="container-players">
 			<h2>Pick A Weapon</h2>

@@ -4,7 +4,7 @@ import PickMenu from "./pickMenu";
 const BoardGame = (props) => {
 	const [isSent, setIsSent] = useState(false);
 	const [mainMenu, setMainMenu] = useState(false);
-	const [player, setPlayer] = useState("It is X turn!");
+	const [player, setPlayer] = useState(props.firstPlayer);
 	const [pickSelection, setPickSelection] = useState(props.o);
 	const [validatorX, setValidatorX] = useState([]);
 	const [validatorO, setValidatorO] = useState([]);
@@ -28,24 +28,30 @@ const BoardGame = (props) => {
 				if (winSet.every((item) => validatorX.includes(item))) {
 					setPlayer("El ganador es X");
 					setColor("winner-color");
-
 					return;
 				}
 				if (winSet.every((item) => validatorO.includes(item))) {
 					setPlayer("El ganador es O");
+					setColor("winner-color");
 					return;
 				}
 			}
 		}
 	}, [validatorX, validatorO, winCondition]); // Solo ejecuta cuando cambian estos valores
 
-	if (pickSelection) {
-		setFirstPlayer("X");
-	} else {
-		setFirstPlayer("O");
-	}
+	const handleChange = (e) => {
+		console.log(e);
+	};
 	const reset = () => {
-		setIsSent(true);
+		const col = document.querySelectorAll(".col");
+		col.forEach((div) => {
+			div.textContent = "";
+		});
+		setValidatorO([]);
+		setValidatorX([]);
+		setPlayer(props.firstPlayer);
+		setColor("");
+		setPickSelection(props.o);
 	};
 
 	const main = () => {
@@ -53,7 +59,7 @@ const BoardGame = (props) => {
 	};
 
 	const handleClick = (e) => {
-		if ((player == `It is X turn!` || player == `It is O turn!`) && e.target.textContent === "") {
+		if ((player == "It is X turn!" || player == "It is O turn!") && e.target.textContent === "") {
 			if (pickSelection) {
 				e.target.textContent = "X";
 				setValidatorX([...validatorX, e.target.id]);
@@ -79,7 +85,7 @@ const BoardGame = (props) => {
 			<h2 className={color}>{player}</h2>
 			<button onClick={reset}>Start Over</button>
 			<button onClick={main}>Main Menu</button>
-			<div className="container text-center">
+			<div className="container text-center" onChange={handleChange}>
 				<div className="row">
 					<div id="0" className="col" onClick={handleClick}></div>
 					<div id="1" className="col" onClick={handleClick}></div>
