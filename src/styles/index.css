@@ -36,8 +36,6 @@ input {
 }
 .container-players {
 	background-color: rgb(162, 137, 103);
-	width: 40vw;
-	height: 60vh;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
